@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
+gem 'wysiwyg-rails'
 gem 'devise'
 gem 'roo'
 gem 'rubyzip', '= 1.2.1'
