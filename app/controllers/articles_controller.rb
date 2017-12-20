@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.where(articles_filter).all
   end
 
   # GET /articles/1
@@ -62,6 +62,13 @@ class ArticlesController < ApplicationController
   end
 
   private
+    def articles_filter
+      cat = params[:category]
+      query = {}
+      query = {category: cat} if cat.present?
+      query
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
