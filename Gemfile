@@ -31,6 +31,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
+gem 'roo'
+gem 'rubyzip', '= 1.2.1'
+gem 'axlsx', github:  'randym/axlsx'
+gem 'axlsx_rails'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do

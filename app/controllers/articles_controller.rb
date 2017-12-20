@@ -4,7 +4,18 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.where(articles_filter).all
+    cat = params[:category]
+    if cat.present?
+      @articles = Category.where(name: cat).first.articles
+    else
+      @articles = Article.all
+    end
+    respond_to do |format|
+      format.html
+      format.csv {send_data @articles.to_csv(@articles)}
+      format.xlsx
+      format.json
+    end
   end
 
   # GET /articles/1
@@ -61,14 +72,12 @@ class ArticlesController < ApplicationController
     end
   end
 
-  private
-    def articles_filter
-      cat = params[:category]
-      query = {}
-      query = {category: cat} if cat.present?
-      query
-    end
+  def import
+    Article.import(params[:file])
+    redirect_to root_url, notice: 'Articles imported.'
+  end
 
+  private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
@@ -76,6 +85,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :category, :body, :published_at)
+      params.require(:article).permit(:title, :category_id, :body, :published_at)
     end
 end
