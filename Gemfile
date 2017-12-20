@@ -35,6 +35,8 @@ gem 'roo'
 gem 'rubyzip', '= 1.2.1'
 gem 'axlsx', github:  'randym/axlsx'
 gem 'axlsx_rails'
+gem 'rspec'
+gem 'rspec-rails'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
