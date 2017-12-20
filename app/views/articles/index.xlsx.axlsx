@@ -1,0 +1,8 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Articles") do |sheet|
+  sheet.add_row Article.column_names
+  @articles.each do |article|
+    sheet.add_row article.attributes.values
+  end
+end
