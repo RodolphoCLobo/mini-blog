@@ -4,7 +4,7 @@
 
 <div class="">
   <%= form_tag articles_path, method: :get do %>
-    <%= text_field_tag( :category, params[:category], placeholder: "Search", class: "form-control" ) %>
+    <%= select_tag :category, options_from_collection_for_select(Category.all, 'name', 'name'), include_blank: true %>
     <%= submit_tag('Search') %>
   <% end %>
 </div>

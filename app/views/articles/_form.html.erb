@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= hidden_field_tag 'article[user_id]', current_user.id %>
+
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, id: :article_title %>

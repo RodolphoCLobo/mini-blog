@@ -1,12 +1,14 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :except => [:index]
+
 
   # GET /articles
   # GET /articles.json
   def index
     cat = params[:category]
     if cat.present?
-      @articles = Category.where(name: cat).first.articles
+      @articles = Category.find_or_initialize_by(name: cat).articles
     else
       @articles = Article.all
     end
@@ -85,6 +87,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :category_id, :body, :published_at)
+      params.require(:article).permit(:title, :category_id, :body, :published_at, :user_id)
     end
 end
