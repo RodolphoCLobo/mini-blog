@@ -10,10 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-̣//= require jquery
+//= require jquery
 //= require froala_editor.min.js
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
 
-$('#article_body').froalaEditor();
+
+$(document).ready(function() {
+  $('#article_body').froalaEditor();
+});
