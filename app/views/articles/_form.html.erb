@@ -21,6 +21,7 @@
   <div class="field">
     <%= form.label :category_id %>
     <%= select_tag 'article[category_id]', options_from_collection_for_select(Category.all, 'id', 'name') %>
+    <a href="/categories/new">Create Category</a>
   </div>
 
   <div class="field">
