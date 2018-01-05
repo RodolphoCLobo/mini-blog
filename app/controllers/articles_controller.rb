@@ -75,8 +75,12 @@ class ArticlesController < ApplicationController
   end
 
   def import
-    Article.import(params[:file])
-    redirect_to root_url, notice: 'Articles imported.'
+    begin
+      Article.import(params[:file])
+      redirect_to root_url, notice: 'Articles imported.'
+    rescue
+      redirect_to root_url, notice: "Invalid CSV or Excel file format."
+    end
   end
 
   private
