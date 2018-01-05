@@ -1,4 +1,4 @@
-user = User.create email: 'rodolpho1704@gmail.com', password: '3036387', password_confirmation: '3036387'
+user = User.new(email: 'rodolpho1704@gmail.com', password: '3036387', password_confirmation: '3036387')
 cat = Category.create(name: 'food')
 Article.create(
 title: 'Conscientização da alimentação humana',
